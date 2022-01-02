@@ -7,4 +7,7 @@ register = template.Library()
 @register.filter
 def TimeToCPS(time):
   # return 'a'
-  return f'{360 / time:.3f}'
+  if time != 0:
+    return f'{360 / time:.3f}'
+  else:
+    return 0

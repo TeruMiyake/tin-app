@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser, UserManager
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib import auth # UserManagerのため
 
@@ -37,7 +37,13 @@ class User(AbstractUser):
     help_text=_('（必須）40 文字以下にしてください。'),
     validators=[displayname_validator],
   )
-  tmptime = models.DecimalField(_('最高記録'),max_digits=7, decimal_places=3, default=0.000, help_text=_('（必須）333.333 など、半角英数時で小数点 3 桁まで入力してください。'))
+  tmptime = models.DecimalField(
+    _('最高記録'),
+    max_digits=7,
+    decimal_places=3,
+    default=999.999,
+    validators=[MinValueValidator(18.0, message="正しい記録を入力してください。")],
+    help_text=_('（必須）333.333 など、半角英数時で小数点 3 桁まで入力してください。'))
   tmpmiss = models.IntegerField(_('最高記録時のミス数'), 
     null=False,
     default=0,
