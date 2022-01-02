@@ -15,15 +15,16 @@
   {% if users %}
   <table class="table table-hover table-striped">
     <tr class="d-flex table-default">
-      <td class="col-4 text-center">User Name（ユーザ名）</td>
+      <td class="col-1 text-center">Rank（順位）</td>
+      <td class="col-3 text-center">User Name（ユーザ名）</td>
       <td class="col-3 text-center">Best Time（最高記録）</td>
       <td class="col-3 text-center">CPS = characters / sec（打/秒）</td>
       <td class="col-2 text-center">Miss（ミス数）</td>
     </tr>
     {% for user in users %}
       <tr class="d-flex table-default">
-        {% comment %} <td class="col-6"><a href="{% url 'cdetail' category_id=category.id %}">{{ category }}</a></td> {% endcomment %}
-        <td class="col-4 text-center"><a href="{{ user.tmpuserurl }}">{{ user.displayname }}</a></td>
+        <td class="col-1 text-center">{{ forloop.counter }}</td>
+        <td class="col-3 text-center"><a href="{{ user.tmpuserurl }}">{{ user.displayname }}</a></td>
         <td class="col-3 text-center"><a href="{{ user.tmpevidenceurl }}">{{ user.tmptime }}</a></td>
         <td class="col-3 text-center">{{ user.tmptime | TimeToCPS }}</td>
         <td class="col-2 text-center">{{ user.tmpmiss }}</td>

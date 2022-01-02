@@ -142,5 +142,5 @@ try:
 except ImportError:
     pass
 
-# import pub_settings.py
+## import pub_settings.py <- なぜかこの行を入れると動かない
 # from .pub_settings import *

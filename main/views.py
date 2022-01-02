@@ -19,7 +19,7 @@ from .forms import *
 # Create your views here.
 
 def index(request):
-  users = User.objects.all()
+  users = User.objects.all().order_by('tmptime')
   # そのうち、記録なしのユーザはフィルタしてもいいかも
   # users = users.filter(
   #   Q(text__icontains=searchword) # icontains : 部分一致
