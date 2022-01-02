@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% comment %} 自作テンプレートタグのロード ※ application 単位で定義しているので、main 以外では使えないぽい？ので注意 {% endcomment %}
+{% load tags %}
+
+{% block title %}
+  Typing (is) Nonsense
+{% endblock %}
+
+
+{% block content %}
+  <h1>Who's the Fastest? - Typing (is) Nonsense Ranking</h1>
+  <br>
+  <h4>The Number of Participants : {{ users.count }}</h4>
+  {% if users %}
+  <table class="table table-hover table-striped">
+    <tr class="d-flex table-default">
+      <td class="col-4 text-center">User Name（ユーザ名）</td>
+      <td class="col-3 text-center">Best Time（最高記録）</td>
+      <td class="col-3 text-center">CPS = characters / sec（打/秒）</td>
+      <td class="col-2 text-center">Miss（ミス数）</td>
+    </tr>
+    {% for user in users %}
+      <tr class="d-flex table-default">
+        {% comment %} <td class="col-6"><a href="{% url 'cdetail' category_id=category.id %}">{{ category }}</a></td> {% endcomment %}
+        <td class="col-4 text-center"><a href="{{ user.tmpuserurl }}">{{ user.displayname }}</a></td>
+        <td class="col-3 text-center"><a href="{{ user.tmpevidenceurl }}">{{ user.tmptime }}</a></td>
+        <td class="col-3 text-center">{{ user.tmptime | TimeToCPS }}</td>
+        <td class="col-2 text-center">{{ user.tmpmiss }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  <hr class="mx-2 my-4" color="black">
+
+  <h3>How to Register ?</h3><br>
+  <table class="table table-hover table-striped">
+    <tr class="d-flex table-default">
+        <td class="col-9">1. <a href="{% url 'index' %}">Sign Up</a> （ユーザー登録＆記録入力） You do not need any personal information.</td>
+    </tr>
+    <tr class="d-flex table-default">
+        <td class="col-9">(2.) <a href="{% url 'login' %}">Sign In</a> （ログイン）</td>
+    </tr>
+    <tr class="d-flex table-default">
+        <td class="col-9">(3.) <a href="{% url 'accountedit' %}">Edit</a> （登録情報の編集・記録更新）</td>
+    </tr>
+  </table>
+  <br>
+
+  <hr class="mx-2 my-4" color="black">
+
+  <h3>What is Typing (is) Nonsense ?</h3>
+  <br>
+  <a href="https://terum.jp/typing/tin.zip">Click to Download（アルファ版です。自己責任にてお願いします）</a><br/><br/>
+  <a href="https://github.com/TeruMiyake/Typing-is-Nonsense">README（GitHub）</a><br>
+  <br>
+  <p>360 文字のランダム文字列を入力するタイピング競技 for Win です。</p>
+  <img src="https://terum.jp/typing/sample01.png" width="320" height="240">
+  <img src="https://terum.jp/typing/sample02.png" width="320" height="240">
+  <br><br>
+  <p>If you missed 100 times, the trial will be canceled.</p>
+  <p>ミス 99 制限です。100 ミスすると強制終了します。</p>
+  <h3><font color="red">For registration, you need 50 misses or fewer !</font></h3>
+  <h3><font color="red">ランキング登録には 50 ミス以下の制限があります！</font></h3>
+  <br>
+  <p>タイプウェルオリジナルをリスペクトして作成されましたが、タイプウェルオリジナルは乱数生成アルゴリズムが弱く偏りがあったため、偏りを起こすことが比較的難しそうな Windows の機能を使っています。</p>
+  <p>今後は、キーを自在にアサインできる（配列に依存しない）、文字を自在にアサインできる（言語に依存しない）ユニバーサル競技（ドン！！）に育てていきたいと思っています。</p>
+  ・アルファ版なので、仕様が変わったらランキングをリセットするかもしれません。（文字数が変わらない限りは、そのつもりはありませんが……）<br>
+  <br>
+  <a href="https://docs.google.com/spreadsheets/d/1vLGH3GoMOHuzzc3fl0SAkk5v4kk4OJf89KxttALgqVg/edit?usp=sharing">TiN ←→ タイプウェル 換算表（雑）</a>
+  
+  <br><br>
+  <hr class="mx-2 my-4" color="black">
+  <p><a href="https://twitter.com/vuttar">作者の twitter ページ</a><br/>
+      </p>
+  
+  <p>
+      <a href="https://teru-typing.hatenablog.com/">作者のタイピングブログ</a><br/>
+      </p>
+  <br><br><br>
+{% endblock %}

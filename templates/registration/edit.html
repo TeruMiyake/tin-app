@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit User information{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <p>アカウント情報編集画面</p>
+  <br><br>
+  <h4>ログイン中のユーザーID ：  {{ user.username }}</h4>
+  <br><br>
+  <form class="ui form" action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="ui orange button" type="submit">確認</button>
+</form>
+  <br>
+  <p><a href="{% url 'index' %}">トップページへ</a></p>
+  <br>
+  <p><a href="{% url 'logout' %}">ログアウト</a></p>
+{% else %}
+  <h2>ユーザとしてログインしていません。</h2>
+  <br>
+  <br><br>
+  <a href="{% url 'login' %}">ログイン</a> |
+  <a href="{% url 'signup' %}">新規登録</a>
+{% endif %}
+{% endblock %}
