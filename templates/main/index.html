@@ -9,7 +9,8 @@
 
 
 {% block content %}
-  <h1>Who's the Fastest? - Typing (is) Nonsense Ranking</h1>
+  <h1>Who's the Fastest?</h1>
+  <h2> - Typing (is) Nonsense Ranking</h2>
   <br>
   <h4>The Number of Participants : {{ users.count }}</h4>
   {% if users %}
@@ -51,21 +52,41 @@
 
   <hr class="mx-2 my-4" color="black">
 
-  <h3>What is Typing (is) Nonsense ?</h3>
+  <h2>What is Typing (is) Nonsense ?</h2>
   <br>
-  <a href="https://terum.jp/typing/tin.zip">Click to Download（アルファ版です。自己責任にてお願いします）</a><br/><br/>
+  <a href="https://terum.jp/typing/tin.zip">Click to Download for Windows (Zip file)</a><br>
+  （アルファ版です。自己責任にてお願いします）<br/><br/>
   <a href="https://github.com/TeruMiyake/Typing-is-Nonsense">README（GitHub）</a><br>
   <br>
-  <p>360 文字のランダム文字列を入力するタイピング競技 for Win です。</p>
-  <img src="https://terum.jp/typing/sample01.png" width="320" height="240">
-  <img src="https://terum.jp/typing/sample02.png" width="320" height="240">
+  <p>A typing competition game for Win. You type randomly generated 360 letters and symbols.
+  <p>360 文字のランダム文字・記号を入力する早さを競うタイピング競技です。</p>
+  <img src="https://terum.jp/typing/img/sample02.png" width="360" height="270">
+  <img src="https://terum.jp/typing/img/sample01.png" width="360" height="270">
   <br><br>
-  <p>If you missed 100 times, the trial will be canceled.</p>
-  <p>ミス 99 制限です。100 ミスすると強制終了します。</p>
+  <h3>・Characters difficult to distinguish （判別しにくい文字の一覧）</h3>
+  <p>(from left) L, l, 1(num), I, i, |(vertical line), O, o, 0(num)</p>
+  <p>できるだけ判別しやすいフォントを選びましたが、一部判別しにくいものがあります。<br>
+  左から 大エル, 小エル, 数字1, 大アイ, 小アイ, 縦線（｜）, 大字オー, 小オー, 数字0 です。</p>
+  <img src="https://terum.jp/typing/img/charsample01.jpg" width="400"><br>
+  <a href="https://fonts.google.com/specimen/Roboto+Mono?preview.text=%20abcdefghijklmnopqrstuvwxyz&preview.text_type=custom">Font Sample （フォントサンプルページ）</a>
+  <br><br>
+  <h3>・Backslash （見慣れない記号）</h3>
+  <p>Sorry for US keyboard users. Now you can't type Backslash(<img src="https://terum.jp/typing/img/backslash.png" width="10">). Please wait for update.</p>
+  <p><img src="https://terum.jp/typing/img/backslash.png" width="20"> という記号を見慣れない方も多いかもしれません。これは「バックスラッシュ」で、最も右下のキー（シフトを押しながら打つと _ が出るキー）が割り当てられています。<br>※右上のキー（シフトを押しながら打つと | が出るキー）でも出せる記号ですが、このゲームでは割り当てていません。</p>
+  <h3>・Miss Limit（ミス制限）</h3>
+  <p>And you can set "Miss Limit" as you like (0 ~ 299, default:50).<br>
+    If you missed more than this limit, the trial will be canceled.</p>
+  <p>0 ~ 299 の範囲で好きな数のミス制限をかけることができます（デフォルトは 50 に設定）。<br>
+    そのミス数を超えるとトライアルが強制終了します。</p>
+  <h3>・What is CPS?（CPS って何）</h3>
+  <p>Characters Per Second. I know KPM (keys/m) or WPM (words/m) are more commonly used indices for typing speed, but in this game you must type SHIFT key too many times, so I think focusing on characters is more appropriate.<br>
+  <p>Characters Per Second（1 秒あたりの文字数）です。タイピング速度を表す指標としては KPM (keys/分) が多く使われますが、シフトキーの多いこの競技では、「キー数」ではなく「文字数」を指標とすることが正しいと考えます。（というより、そもそもシフトの打ち方によってキー数が変わってしまう）</p>
+
+  <br><h2>注意事項</h2>
   <h3><font color="red">For registration, you need 50 misses or fewer !</font></h3>
-  <h3><font color="red">ランキング登録には 50 ミス以下の制限があります！</font></h3>
+  <h3><font color="red">ランキング登録には 50 ミス以下の制限があります！</font></h3><br>
   <br>
-  <p>タイプウェルオリジナルをリスペクトして作成されましたが、タイプウェルオリジナルは乱数生成アルゴリズムが弱く偏りがあったため、偏りを起こすことが比較的難しそうな Windows の機能を使っています。</p>
+  <p>タイプウェルオリジナルというランダム入力タイピングゲームをリスペクトして作成されましたが、タイプウェルオリジナルは乱数生成アルゴリズムが弱く偏りがあったため、偏りを起こすことが比較的難しそうな Windows の機能を使っています。</p>
   <p>今後は、キーを自在にアサインできる（配列に依存しない）、文字を自在にアサインできる（言語に依存しない）ユニバーサル競技（ドン！！）に育てていきたいと思っています。</p>
   ・アルファ版なので、仕様が変わったらランキングをリセットするかもしれません。（文字数が変わらない限りは、そのつもりはありませんが……）<br>
   <br>
