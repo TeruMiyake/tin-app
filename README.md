@@ -12,9 +12,12 @@
 * 3
 
 # Requirement
-
+Python 3.9
 
 # Installation
+```bash
+pip install requirements_all.txt 
+```
 
 # Usage
 
